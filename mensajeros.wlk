@@ -9,21 +9,21 @@ object paquete {
 		return estaPago
 	} 
 
-	method puedeSerEntregadoPor(_mensajero,_destino){
-		return estaPago and _destino.puedePasar(_mensajero) //consulta si el paquete esta pagado y 
+	method puedeSerEntregadoPor(mensajero,destino){
+		return estaPago and destino.puedePasar(mensajero) //consulta si el paquete esta pagado y 
 	}														//si el mensajero puede pasar al destino
 }
 
 
 object matrix {
-  method puedePasar(_mensajero) {
-	return _mensajero.puedeLlamar()
+  method puedePasar(mensajero) {
+	return mensajero.puedeLlamar()
   }
 }
 
 object puenteDeBrooklyn {
-	method puedePasar(_mensajero) {
-	return _mensajero.pesoActual()<=1000
+	method puedePasar(mensajero) {
+	return mensajero.pesoActual()<=1000
   }
 }
 
