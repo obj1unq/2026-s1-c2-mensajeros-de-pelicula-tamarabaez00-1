@@ -1,0 +1,30 @@
+import mensajeros.*
+
+describe "Entregando paquetes" {
+  test "Neo no puede llevar el paquete que no esta pago a la matrix" {
+    paquete.estaPago(false)
+
+    assert.notThat(paquete.puedeSerEntregadoPor(neo,matrix))
+  }
+
+  test "jean puede entregar el paquete pago a la matrix" {
+    paquete.estaPago(true) // Aunque inicialmente la variable ya tiene un valor "true" 
+
+    assert.that(paquete.puedeSerEntregadoPor(jeanGray ,matrix))
+  }
+
+  test "Sara no puede entregar paquete pago con camion acoplado por el puente de brooklyn" {
+    paquete.estaPago(true)
+    saraConnor.vehiculo(camion)
+    camion.cantDeAcoplados(1)
+
+    assert.notThat(paquete.puedeSerEntregadoPor(saraConnor,puenteDeBrooklyn))
+  }
+
+  test "Sara puede entregar paquete pago en moto por el puente de brooklyn" {
+    paquete.estaPago(true)
+    saraConnor.vehiculo(moto)
+
+    assert.that(paquete.puedeSerEntregadoPor(saraConnor,puenteDeBrooklyn))
+  }
+}
