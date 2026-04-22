@@ -1,29 +1,29 @@
 object paquete {
 	var estaPago= true
 
-	method estaPagado(valor) {
-	  estaPago= valor
+	method estaPago(_valor) {
+	  estaPago= _valor
 	}
 	
 	method estaPago(){
 		return estaPago
 	} 
 
-	method puedeEntregar_En_(mensajero,destino){
-		return estaPago and destino.puedePasar(mensajero) //consulta si el paquete esta pagado y 
+	method puedeSerEntregadoPor(_mensajero,_destino){
+		return estaPago and _destino.puedePasar(_mensajero) //consulta si el paquete esta pagado y 
 	}														//si el mensajero puede pasar al destino
 }
 
 
 object matrix {
-  method puedePasar(mensajero) {
-	return mensajero.puedeLlamar()
+  method puedePasar(_mensajero) {
+	return _mensajero.puedeLlamar()
   }
 }
 
 object puenteDeBrooklyn {
-	method puedePasar(mensajero) {
-	return mensajero.pesoActual()<=1000
+	method puedePasar(_mensajero) {
+	return _mensajero.pesoActual()<=1000
   }
 }
 
@@ -47,8 +47,8 @@ object neo {
 		return peso
 	}
 
-	method tieneCredito(valor) { 
-	  tieneCredito= valor
+	method tieneCredito(_valor) { 
+	  tieneCredito= _valor
 	}
 
 	method puedeLlamar(){
@@ -58,10 +58,10 @@ object neo {
 
 object saraConnor{
 	var peso = 70
-	var vehiculo= camion
+	var vehiculo= camion //podria poner null y al momento del test le asigno el camion?
 	
-	method cambiarPeso(_peso) {
-	peso=_peso
+	method peso(_peso) {
+		peso=_peso
 	}
 	
 	method pesoActual(){
@@ -72,11 +72,7 @@ object saraConnor{
 		return false
 	}
 
-	method vehiculo(){
-		return vehiculo
-	} 
-
-	method cambiarVehiculo(_vehiculo){
+	method vehiculo(_vehiculo){
 		vehiculo= _vehiculo
 	} 
 
@@ -90,8 +86,8 @@ object camion {
 	  return 500 + (500 * cantDeAcoplados)
 	}
 
-	method agregarAcoplados(cantidad) {
-	  cantDeAcoplados= cantidad
+	method cantDeAcoplados(_cantidad) {
+	  cantDeAcoplados= _cantidad
 	}
 
 }
